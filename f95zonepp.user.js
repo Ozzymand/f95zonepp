@@ -3,8 +3,9 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://f95zone.to/*
 // @grant       MIT
-// @version     1.1
-// @author      Me
+// @version     1.2
+// @author      Ozzy
+// @url         https://github.com/Ozzymand/f95zonepp
 // @description Extremely rough draft of something bigger.
 // ==/UserScript==
 
@@ -23,14 +24,100 @@ const RATING_WEIGHT = 3.4;  //  grading system on the games
 
 // Dev stuff
 let DEBUGGING = false;
+let initalTime = null;
 const multipliers = { 'K': 1e3, 'M': 1e6, 'B': 1e9 };
 let gameCardsObserver = null;
 let processedCards = new Set(); // Track which cards we've already processed
 
-function clog(msg, ...param) {
-    if (DEBUGGING) {
-        console.log(msg, ...param);
+////////////////////////////////////////////////////////////////////////////////////////
+// Logging utilities
+const LogLevel = {
+    INFO: 'INFO',
+    WARN: 'WARN',
+    ERROR: 'ERROR',
+    SUCCESS: 'SUCCESS',
+    DEBUG: 'DEBUG'
+};
+
+const LogStyles = {
+    INFO: 'color: #00bfff; font-weight: bold;',      // Cyan
+    WARN: 'color: #ffa500; font-weight: bold;',      // Orange
+    ERROR: 'color: #ff4444; font-weight: bold;',     // Red
+    SUCCESS: 'color: #00ff00; font-weight: bold;',   // Green
+    DEBUG: 'color: #9370db; font-weight: bold;',     // Purple
+    RESET: 'color: inherit; font-weight: normal;',
+    HIGHLIGHT: 'color: #ffff00; font-weight: bold;', // Yellow
+    MUTED: 'color: #888888;'                         // Gray
+};
+
+function clog(level, message, ...params) {
+    if (!DEBUGGING) return;
+    
+    const timestamp = new Date().toLocaleTimeString('en-US', { 
+        hour12: false, 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit',
+        fractionalSecondDigits: 3
+    });
+    
+    const prefix = `[F95++] [${timestamp}]`;
+    const style = LogStyles[level];
+    
+    if (params.length > 0) {
+        console.log(`%c${prefix} ${message}`, style, ...params);
+    } else {
+        console.log(`%c${prefix} ${message}`, style);
     }
+}
+
+function ilog(message, ...params) {
+    clog(LogLevel.INFO, message, ...params);
+}
+
+function wlog(message, ...params) {
+    clog(LogLevel.WARN, message, ...params);
+}
+
+function elog(message, ...params) {
+    clog(LogLevel.ERROR, message, ...params);
+}
+
+function slog(message, ...params) {
+    clog(LogLevel.SUCCESS, message, ...params);
+}
+
+function dlog(message, ...params) {
+    clog(LogLevel.DEBUG, message, ...params);
+}
+
+function logPerformance(label, startTime) {
+    if (!DEBUGGING) return;
+    const duration = Date.now() - startTime;
+    const style = duration < 100 ? LogStyles.SUCCESS : 
+                  duration < 250 ? LogStyles.INFO : 
+                  LogStyles.WARN;
+    
+    console.log(
+        `%c[F95++] %c${label}%c took %c${duration}ms`,
+        LogStyles.DEBUG,
+        LogStyles.HIGHLIGHT,
+        LogStyles.RESET,
+        style
+    );
+}
+
+function logTable(label, data) {
+    if (!DEBUGGING) return;
+    console.log(`%c[F95++] ${label}`, LogStyles.INFO);
+    console.table(data);
+}
+
+function logGroup(label, callback) {
+    if (!DEBUGGING) return;
+    console.group(`%c[F95++] ${label}`, LogStyles.INFO);
+    callback();
+    console.groupEnd();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -45,7 +132,8 @@ if (self.navigation) {
 }
 
 function onUrlChange() {
-    clog("processing", location.href);
+    initalTime = Date.now();
+    ilog("processing", location.href);
 
     // Disconnect previous observer if it exists
     if (gameCardsObserver) {
@@ -60,7 +148,7 @@ function onUrlChange() {
         waitForGameCards();
         return;
     }
-    clog('Nothing special to do on current page');
+    ilog('Nothing special to do on current page');
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -69,7 +157,7 @@ function waitForGameCards() {
     let container = document.getElementById("latest-page_items-wrap_inner");
 
     if (!container) {
-        clog("Container not found, waiting...");
+        ilog("Container not found, waiting...");
         setTimeout(waitForGameCards, 100);
         return;
     }
@@ -77,12 +165,12 @@ function waitForGameCards() {
     // Process any existing cards
     let game_cards = container.querySelectorAll('.resource-tile');
     if (game_cards.length > 0) {
-        clog("Game cards already loaded");
+        slog("Game cards already loaded");
         latest_updates();
     }
 
     // Set up continuous observer for new cards (for page navigation)
-    clog("Setting up observer for card changes...");
+    ilog("Setting up observer for card changes...");
     gameCardsObserver = new MutationObserver((mutations) => {
         // Check if cards were added or removed
         let hasChanges = mutations.some(mutation =>
@@ -90,7 +178,7 @@ function waitForGameCards() {
         );
 
         if (hasChanges) {
-            clog("Cards changed, reprocessing...");
+            ilog("Cards changed, reprocessing...");
             // Small delay to ensure all cards are loaded
             setTimeout(() => {
                 latest_updates();
@@ -109,16 +197,16 @@ function waitForGameCards() {
 function latest_updates() {
     let container = document.getElementById("latest-page_items-wrap_inner");
     if (!container) {
-        clog("Container not found");
+        wlog("Container not found");
         return;
     }
 
     let game_cards = Array.from(container.querySelectorAll('.resource-tile'));
 
-    clog(`Found ${game_cards.length} game cards`);
+    slog(`Found ${game_cards.length} game cards`);
 
     if (game_cards.length === 0) {
-        clog("No game cards found, HTMLCollection:", container.children);
+        ilog("No game cards found, HTMLCollection:", container.children);
         return;
     }
 
@@ -140,7 +228,7 @@ function latest_updates() {
     });
 
     if (!isNewPage && processedCards.size > 0) {
-        clog("Same cards, skipping...");
+        ilog("Same cards, skipping...");
         return;
     }
 
@@ -149,12 +237,13 @@ function latest_updates() {
     currentCardIds.forEach(id => processedCards.add(id));
 
     let parsed_games = parse_games(game_cards);
-    clog("Parsed games:", parsed_games);
+    slog("Parsed games:", parsed_games);
 
     // Apply effects based on user preference
     parsed_games.forEach((game, index) => {
         weight_color_coding(game_cards[index], game);
     });
+    logPerformance("Page processing", initalTime);
 }
 
 function parse_games(game_cards) {
@@ -264,22 +353,21 @@ function parse_game_metadata(game_card) {
 
 function weight_color_coding(card_element, game_data) {
     // Remove any existing styling first
-    if(!DRAW_COMMUNITY_ENGAGEMENT_BORDER){
+    if (!DRAW_COMMUNITY_ENGAGEMENT_BORDER) {
         return;
     }
-    card_element.style.borderLeft = "";
 
-    if (game_data.weighted_average.probability !== null) {
-        if (game_data.weighted_average.probability === 4) {
-            card_element.style.borderLeft = `${BORDER_WIDTH}px solid #00ff00ff`; // Green for high rating
-        } else if (game_data.weighted_average.probability === 3) {
-            card_element.style.borderLeft = `${BORDER_WIDTH}px solid #ffff00`; // Yellow for medium rating
-        } else if (game_data.weighted_average.probability === 2) {
-            card_element.style.borderLeft = `${BORDER_WIDTH}px solid #ff9900ff`; // Yellow for medium rating
-        } else if (game_data.weighted_average.probability === 1) {
-            card_element.style.borderLeft = `${BORDER_WIDTH}px solid #ff0400ff`; // Yellow for medium rating
-        } else {
-            card_element.style.borderLeft = `${BORDER_WIDTH}px solid #ff000042`; // Red for low rating
-        }
+    let probability = game_data.weighted_average.probability;
+
+    if (probability === 4) {
+        card_element.style.borderLeft = `${BORDER_WIDTH}px solid #00ff00ff`;
+    } else if (probability === 3) {
+        card_element.style.borderLeft = `${BORDER_WIDTH}px solid #ffff00`;
+    } else if (probability === 2) {
+        card_element.style.borderLeft = `${BORDER_WIDTH}px solid #ff9900ff`;
+    } else if (probability === 1) {
+        card_element.style.borderLeft = `${BORDER_WIDTH}px solid #ff0400ff`;
+    } else {
+        card_element.style.borderLeft = `${BORDER_WIDTH}px solid #ff000042`;
     }
 }
