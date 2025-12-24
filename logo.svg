@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="logo.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="1.0357031"
+     inkscape:cx="251.0372"
+     inkscape:cy="224.48519"
+     inkscape:window-width="1608"
+     inkscape:window-height="858"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g7" />
+  <defs
+     id="defs1">
+    <rect
+       x="117.44143"
+       y="237.92014"
+       width="340.17518"
+       height="219.69647"
+       id="rect6" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect1"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,53.354857,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect1-5"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,53.354857,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath6">
+      <use
+         x="0"
+         y="0"
+         xlink:href="#g5"
+         id="use6"
+         transform="translate(0,-8.0994089)" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath6-1">
+      <use
+         x="0"
+         y="0"
+         xlink:href="#g5-6"
+         id="use6-5"
+         transform="translate(0,-8.0994089)" />
+    </clipPath>
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect1-3"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,53.354857,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <rect
+       x="117.44143"
+       y="237.92014"
+       width="340.17517"
+       height="219.69647"
+       id="rect6-5" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g7"
+       inkscape:label="F">
+      <g
+         id="g6-3"
+         clip-path="url(#clipPath6-1)"
+         transform="matrix(0.99555758,0,0,1.0004788,26.656941,-117.52933)"
+         style="display:inline"
+         inkscape:label="upper-part">
+        <g
+           inkscape:label="Clip"
+           id="g5-6"
+           transform="translate(0,8.0994089)">
+          <rect
+             style="fill:none;fill-opacity:1;stroke:none;stroke-width:0;stroke-dasharray:none"
+             id="rect2-5"
+             width="50.621296"
+             height="121.49112"
+             x="52.646183"
+             y="149.83905"
+             inkscape:label="rect2" />
+          <rect
+             style="fill:none;fill-opacity:1;stroke:none;stroke-width:0;stroke-dasharray:none"
+             id="rect2-8-9"
+             width="131.61539"
+             height="83.018936"
+             x="102.83846"
+             y="148.2858"
+             inkscape:label="rect2" />
+          <ellipse
+             style="fill:none;fill-opacity:1;stroke:none;stroke-width:0;stroke-dasharray:none"
+             id="path6"
+             cx="431.94016"
+             cy="475.54761"
+             rx="40.667614"
+             ry="39.645069"
+             transform="matrix(1,0,-0.80014628,0.59980491,0,0)" />
+        </g>
+        <path
+           style="fill:#d20000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+           id="rect1-5"
+           width="199.44795"
+           height="284.49173"
+           x="56.695862"
+           y="191.34854"
+           inkscape:label="rect1"
+           sodipodi:type="rect"
+           transform="matrix(1.0072425,0,0,1.0013072,-1.4469105,-2.2292514)"
+           d="M 110.05072,191.34854 H 256.14381 V 475.84027 H 56.695862 V 244.7034 a 53.354857,53.354857 135 0 1 53.354858,-53.35486 z"
+           inkscape:path-effect="#path-effect1-3" />
+      </g>
+      <g
+         id="g6"
+         clip-path="url(#clipPath6)"
+         transform="matrix(0.99555758,0,0,0.99847337,25.656942,-26.215711)"
+         inkscape:label="lower-part">
+        <g
+           inkscape:label="Clip"
+           id="g5"
+           transform="translate(0,8.0994089)">
+          <rect
+             style="fill:none;fill-opacity:1;stroke:none;stroke-width:0;stroke-dasharray:none"
+             id="rect2"
+             width="50.621296"
+             height="329.03848"
+             x="52.646183"
+             y="149.83905"
+             inkscape:label="rect2" />
+          <rect
+             style="fill:none;fill-opacity:1;stroke:none;stroke-width:0;stroke-dasharray:none"
+             id="rect2-8"
+             width="131.61539"
+             height="83.018936"
+             x="102.83846"
+             y="148.2858"
+             inkscape:label="rect2" />
+        </g>
+        <path
+           style="fill:#d20000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+           id="rect1"
+           width="199.44795"
+           height="284.49173"
+           x="56.695862"
+           y="191.34854"
+           inkscape:label="rect1"
+           sodipodi:type="rect"
+           transform="matrix(1.0072425,0,0,1.0033183,-0.44244829,-1.5463)"
+           d="M 110.05072,191.34854 H 256.14381 V 475.84027 H 56.695862 V 244.7034 a 53.354857,53.354857 135 0 1 53.354858,-53.35486 z"
+           inkscape:path-effect="#path-effect1" />
+      </g>
+    </g>
+    <text
+       xml:space="preserve"
+       id="text6"
+       style="font-size:192px;line-height:0;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';text-align:center;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect6);display:inline;fill:#383838;fill-opacity:1;stroke:none;stroke-width:0;stroke-dasharray:none"
+       transform="matrix(1.4453887,0,0,1.4473089,-112.07382,-4.4531698)"
+       inkscape:label="95"><tspan
+         x="180.74805"
+         y="298.45495"
+         id="tspan2">95</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text6-1"
+       style="font-size:192px;line-height:0;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';text-align:center;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect6-5);display:inline;fill:#727272;fill-opacity:1;stroke:none;stroke-width:0;stroke-dasharray:none"
+       transform="matrix(0.76224505,0,0,0.77575758,155.79383,-11.597939)"
+       inkscape:label="pp"><tspan
+         x="175.4043"
+         y="298.45495"
+         id="tspan3">++</tspan></text>
+  </g>
+</svg>
