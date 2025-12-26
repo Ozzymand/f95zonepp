@@ -1,5 +1,7 @@
 # F95Zone++
 
+[GreasyFork](https://greasyfork.org/en/scripts/560087-f95zone) | [Direct](https://github.com/Ozzymand/f95zonepp/raw/refs/heads/main/f95zonepp.user.js)
+
 1. [Features](#features)
 2. [Math](#the-underlying-math)
 
